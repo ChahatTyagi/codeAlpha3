@@ -1,0 +1,61 @@
+import java.util.*;  
+public class StudentsGradeCalculator 
+{  
+    public static void main(String[] args) 
+    {  
+        Scanner sc = new Scanner(System.in);  
+        System.out.println("Student Grade Tracker");  
+        System.out.println("Enter marks in each subject out of 100");  
+        System.out.print("Enter the number of subjects: "); 
+        int numSubjects = sc.nextInt();  
+        int[] arr = new int[numSubjects];  
+        int totalMarks = 0;  
+        int count = 0;  
+        for (int i = 1; i <= numSubjects; i++) 
+        {  
+            System.out.print("Enter the marks of subject " + i + ": ");  
+            int marks = sc.nextInt();  
+            if (marks >= 0 && marks <= 100) 
+            {  
+                arr[i - 1] = marks;  
+                totalMarks += marks;  
+                count++;  
+            } 
+            else 
+            {  
+                System.out.println("Invalid input. Marks should be between 0 and 100.");  
+                i--; 
+            }  
+        } 
+        System.out.println("Total Marks: " + totalMarks);  
+        double averagePercentage = (double) totalMarks / count;  
+        System.out.println("Average Percentage: " + averagePercentage);  
+        int highest = Arrays.stream(arr).max().orElse(0);  
+        int lowest = Arrays.stream(arr).min().orElse(0);  
+        System.out.println("Highest Score: " + highest);  
+        System.out.println("Lowest Score: " + lowest);  
+        char Grade;  
+        if (averagePercentage >= 90) 
+        {  
+            Grade = 'A';  
+        } 
+        else if (averagePercentage >= 80) 
+        {  
+            Grade = 'B';  
+        } 
+        else if (averagePercentage >= 60) 
+        {  
+            Grade = 'C';  
+        } 
+        else if (averagePercentage >= 33) 
+        {  
+            Grade = 'D';  
+        } 
+        else 
+        {  
+            Grade = 'E';  
+        }  
+        System.out.println("Grade: " + Grade);  
+        sc.close();  
+    }  
+}
